@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <button id="decrement-button">-</button>
+    <button id="increment-button">+</button>
+
+    <p id="demo"></p>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+            const demo = document.getElementById("demo");
+            
+            const decrementButton = document.getElementById("decrement-button");
+            const incrementButton = document.getElementById("increment-button");
+
+            const language = {
+                __value: null,
+                set current(value) {
+                    __value = value;
+                    demo.innerHTML = __value;
+                    this.log.push(value);
+                },
+                get current() {
+                    return __value;
+                },
+                log: []
+            };
+
+            // default value
+            language.current = 0;
+
+            decrementButton.addEventListener("click", () => {
+                language.current -= 1;
+            });
+
+            incrementButton.addEventListener("click", () => {
+                language.current += 1;
+            });
+        });
+    </script>
+</body>
+</html>
